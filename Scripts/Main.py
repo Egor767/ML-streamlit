@@ -108,4 +108,3 @@ loader()
 check = st.checkbox('Переход к моделям')
 if(check):
     model_choiser()
-
