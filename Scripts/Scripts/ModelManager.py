@@ -29,15 +29,10 @@ class ModelManager():
         return {'MAE': MAE, 'MSE': MSE, 'MAPE': MAPE, 'R2': R2}
     
     def fit(self, X_test, y_test):
-        st.write("fit 1")
-        #st.write(X_test, y_test)
         result = self.actual_model.fit(X_test, y_test)  
-        st.write("fit 2")
         self.actual_model = result
 
     def predict(self, X_test, y_test):
-        st.write("predict 1")
         st.write(self.actual_model)
         y_pred = self.actual_model.predict(X_test)
-        st.write("predict 2")
         return y_pred, self.report(y_test, y_pred)
