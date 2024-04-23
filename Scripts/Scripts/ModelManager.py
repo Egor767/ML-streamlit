@@ -29,7 +29,7 @@ class ModelManager():
     
     def fit(self, X_test, y_test):
         st.write("fit 1")
-        grid = GridSearchCV(self.actual_model, self.model_params)
+        grid = GridSearchCV(self.actual_model, [self.model_params])
         grid.fit(X_test, y_test)
         self.actual_model = grid.best_estimator_
 
