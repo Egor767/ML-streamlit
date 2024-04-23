@@ -6,7 +6,6 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolu
 from sklearn.model_selection import GridSearchCV
 
 from sklearn.linear_model import MultiTaskLasso, ElasticNet
-from sklearn.linear_model import ElasticNet
 
 class ModelManager():
     def __init__(self, models) -> None:
@@ -31,8 +30,8 @@ class ModelManager():
     
     def fit(self, X_test, y_test):
         st.write("fit 1")
-        st.write(X_test, y_test)
-        result = self.actual_model.fit(X_test, y_test)  
+        #st.write(X_test, y_test)
+        result = ElasticNet(alpha = 1.0).fit(X_test, y_test)  
         st.write("fit 2")
         self.actual_model = result
 
