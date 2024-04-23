@@ -33,6 +33,5 @@ class ModelManager():
         self.actual_model = result
 
     def predict(self, X_test, y_test):
-        st.write(self.actual_model)
         y_pred = self.actual_model.predict(X_test)
         return y_pred, self.report(y_test, y_pred)
