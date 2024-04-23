@@ -14,7 +14,6 @@ class ModelManager():
         
     def model_init(self, actual_model):
         self.actual_model = self.models[actual_model[0]][0]
-        self.model_params = self.models[actual_model[0]][1]
         if actual_model[1] == 'classification':
             self.report = self.report_class
         else:
@@ -33,7 +32,7 @@ class ModelManager():
     def fit(self, X_test, y_test):
         st.write("fit 1")
         st.write(X_test, y_test)
-        result = ElasticNet(alpha = 1.0).fit(X_test, y_test)  
+        result = self.actual_model.fit(X_test, y_test)  
         st.write("fit 2")
         self.actual_model = result
 
@@ -42,4 +41,4 @@ class ModelManager():
         st.write(self.actual_model)
         y_pred = self.actual_model.predict(X_test)
         st.write("predict 2")
-        return y_pred, self.report(X_test, y_pred)
+        return y_pred, self.report(y_test, y_pred)

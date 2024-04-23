@@ -16,11 +16,8 @@ from Scripts.PrepairData import PrepairData
 visual = Visual()
 prepair = PrepairData()
 model_manager = ModelManager({
-    'GaussianClassifier' : [GaussianProcessClassifier(), {
-        'kernel': 1.0 * RBF(1.0),
-        'random_state': 0}],
-    'MultiTaskLasso' : [MultiTaskLasso(), {
-        'alpha': 1.0}]
+    'GaussianClassifier' : [GaussianProcessClassifier(kernel = 1.0 * RBF(1.0), random_state = 0)],
+    'MultiTaskLasso' : [MultiTaskLasso(alpha = 1.0)]
     })
 
 def loader():
@@ -54,7 +51,6 @@ def predictor():
         X_train, X_test, y_train, y_test = prepair.split(choice)
         model_manager.fit(X_train, y_train)
         result, report = model_manager.predict(X_test, y_test)
-        st.write(result, report)
         st.write("final")
         st.json(report)
         st.write(result)
