@@ -35,18 +35,15 @@ class PrepairData():
     def get_columns(self):
         return self.data.columns.to_list()
     
-    def encoder(self):
-        columns = []
+    def data_encoder(self, columns):
+        self.columns = columns
         for i in self.data.columns.tolist():
             if is_string_dtype(self.data[i]):
-                columns.append(i)
+                self.columns.append(i)
 
-        columns.append('Alcohol Consumption')
-        columns.append('Medical Conditions')
-        columns.append('Medications')
         label_encoder = preprocessing.LabelEncoder()
 
-        for i in columns:
+        for i in self.columns:
             self.data[i] = label_encoder.fit_transform(self.data[i])
 
     def split(self, predict, test_size = 0.3):

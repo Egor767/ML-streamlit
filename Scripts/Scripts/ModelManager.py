@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import streamlit as st
 from sklearn.metrics import f1_score, classification_report
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error, r2_score
 from sklearn.model_selection import GridSearchCV
@@ -27,11 +28,16 @@ class ModelManager():
         return {'MAE': MAE, 'MSE': MSE, 'MAPE': MAPE, 'R2': R2}
     
     def fit(self, X_test, y_test):
-        grid = GridSearchCV(self.actual_model, self.model_params).fit(X_test, y_test)
-        self.actual_model = grid.best_estimator_
+        st.write("fit 1")
+        #grid = GridSearchCV(self.actual_model, self.model_params).fit(X_test, y_test)
+        st.write("fit 2")
+        self.actual_model = self.model_params
 
     def predict(self, X_test, y_test):
+        st.write("predict 1")
+        st.write(self.actual_model)
         y_pred = self.actual_model.predict(X_test)
-        return {y_pred, self.report(X_test, y_pred)}
+        st.write("predict 2")
+        return y_pred, self.report(X_test, y_pred)
     
     

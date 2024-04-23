@@ -25,33 +25,35 @@ model_manager = ModelManager({
 def loader():
     data = st.file_uploader("Загрузите датасет в формате *.csv", type="csv")
     data = pd.read_csv(data, sep = ',')
-    prepair.load_data(data)
+    prepair.init_data(data)
 
 def convertor(data):
     return data.to_csv().encode('utf-8')
 
 def model_choiser():
     st.markdown("Датасет:")
-    prepair.show_data()
+    prepair.data_show()
          
     choices = ["Классификация", "Регрессия"]   
     choice = st.selectbox("Выберите вид задачи", choices, index=None)
                
     if choice is not None:
         if choice == choices[0]:
-            model_manager.model_init('GaussianClassifier', 'classification')
+            model_manager.model_init(['GaussianClassifier', 'classification'])
         else:
-            model_manager.model_init('MultiTaskLasso', 'regression')
+            model_manager.model_init(['MultiTaskLasso', 'regression'])
 
         prepairer()
 
 def predictor():
     choice = st.text_input("Введите целевой признак")
     check = st.checkbox('Обучить модель')
+    
     if (choice != None and check):
         X_train, X_test, y_train, y_test = prepair.split(choice)
         model_manager.fit(X_train, y_train)
         result, report = model_manager.predict(X_test, y_test)
+        st.write("final")
         st.json(report)
         st.write(result)
 
@@ -76,7 +78,7 @@ def encoder():
             
         check2 = st.checkbox('Закодировать выбранные признаки')
         if (len(columns)!= 0 and check2):
-            prepair.encoder(columns)
+            prepair.data_encoder(columns)
             prepair.data_show()
 
 def cleaner():
