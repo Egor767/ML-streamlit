@@ -54,6 +54,7 @@ def predictor():
         X_train, X_test, y_train, y_test = prepair.split(choice)
         model_manager.fit(X_train, y_train)
         result, report = model_manager.predict(X_test, y_test)
+        st.write(result, report)
         st.write("final")
         st.json(report)
         st.write(result)
