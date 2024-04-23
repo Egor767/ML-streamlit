@@ -5,7 +5,7 @@ from sklearn.metrics import f1_score, classification_report
 from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolute_percentage_error, r2_score
 from sklearn.model_selection import GridSearchCV
 
-from sklearn.linear_model import MultiTaskLasso, Lasso
+from sklearn.linear_model import MultiTaskLasso, ElasticNet
 from sklearn.linear_model import ElasticNet
 
 class ModelManager():
@@ -33,9 +33,7 @@ class ModelManager():
     def fit(self, X_test, y_test):
         st.write("fit 1")
         st.write(X_test, y_test)
-        grid = GridSearchCV(self.actual_model, self.model_params).fit(X_test, y_test)  
-        #parametersGrid = {"max_iter": [1, 5, 10], "alpha": [0.0001, 0.001, 0.01, 0.1, 1, 10, 100], "l1_ratio": np.arange(0.0, 1.0, 0.1)}
-        #grid = GridSearchCV(ElasticNet(), parametersGrid).fit(X_test, y_test)
+        grid = GridSearchCV(ElasticNet, self.model_params).fit(X_test, y_test)  
         st.write("fit 2")
         self.actual_model = grid.best_estimator_
 
