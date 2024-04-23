@@ -31,7 +31,7 @@ class ModelManager():
     def fit(self, X_test, y_test):
         st.write("fit 1")
         #st.write(X_test, y_test)
-        result = ElasticNet(alpha = 1.0).fit(X_test, y_test)  
+        result = self.actual_model.fit(X_test, y_test)  
         st.write("fit 2")
         self.actual_model = result
 

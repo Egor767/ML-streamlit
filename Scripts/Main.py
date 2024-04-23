@@ -4,7 +4,7 @@ import numpy as np
 
 from sklearn.gaussian_process.kernels import RBF
 from sklearn.gaussian_process import GaussianProcessClassifier
-from sklearn.linear_model import MultiTaskLasso, Lasso
+from sklearn.linear_model import MultiTaskLasso, ElasticNet
 
 import sys
 
@@ -17,7 +17,7 @@ visual = Visual()
 prepair = PrepairData()
 model_manager = ModelManager({
     'GaussianClassifier' : [GaussianProcessClassifier(kernel = 1.0 * RBF(1.0), random_state = 0)],
-    'MultiTaskLasso' : [MultiTaskLasso(alpha = 1.0)]
+    'MultiTaskLasso' : [ElasticNet(alpha = 1.0)]
     })
 
 def loader():
