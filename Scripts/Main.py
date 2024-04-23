@@ -20,7 +20,7 @@ model_manager = ModelManager({
         'kernel': 1.0 * RBF(1.0),
         'random_state': 0}],
     'MultiTaskLasso' : [MultiTaskLasso(), {
-        'alpha': np.arange(0.1, 1, 0.1)}]
+        'alpha': 1.0}]
     })
 
 def loader():

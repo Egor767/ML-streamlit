@@ -43,5 +43,3 @@ class ModelManager():
         y_pred = self.actual_model.predict(X_test)
         st.write("predict 2")
         return y_pred, self.report(X_test, y_pred)
-    
-    
