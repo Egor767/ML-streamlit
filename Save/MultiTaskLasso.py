@@ -18,7 +18,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.7, shuffle
 params = {'alpha': 1.0}
 mlt = ElasticNet(alpha = 1.0).fit(X_test, y_test)
 predict = mlt.predict(X_test)
-print(predict[:5])
+print(data.info())
 
 with open('MultiTaskLasso.pkl','wb') as file:
     pickle.dump(mlt, file)

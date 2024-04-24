@@ -51,7 +51,9 @@ def predictor():
         X_train, X_test, y_train, y_test = prepair.split(choice)
         model_manager.fit(X_train, y_train)
         result, report = model_manager.predict(X_test, y_test)
+        st.write("Метрики: ")
         st.json(report)
+        st.write("Получившийся предикт: ")
         st.write(result)
 
 def deleter():
