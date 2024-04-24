@@ -98,8 +98,8 @@ def prepairer():
             check = st.checkbox('Далее')
             if(check):
                 deleter()
-                check = st.checkbox('Далее')
-                if(check):
+                check1 = st.checkbox('Далее')
+                if(check1):
                     encoder()
                     check2 = st.checkbox('Перейти к получению результатов')  
                     if (check2):
