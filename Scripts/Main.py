@@ -48,11 +48,8 @@ def predictor():
     check = st.checkbox('Обучить модель')
     
     if (choice != None and check):
-        st.write("1111")
         X_train, X_test, y_train, y_test = prepair.split(choice)
-        st.write("2222")
         model_manager.fit(X_train, y_train)
-        st.write("3333")
         result, report = model_manager.predict(X_test, y_test)
         st.write("Метрики: ")
         st.json(report)
@@ -98,11 +95,15 @@ def prepairer():
 
         else:
             cleaner()
-            deleter()
-            encoder()
-            check2 = st.checkbox('Перейти к получению результатов')  
-            if (check2):
-                predictor()
+            check = st.checkbox('Далее')
+            if(check):
+                deleter()
+                check = st.checkbox('Далее')
+                if(check):
+                    encoder()
+                    check2 = st.checkbox('Перейти к получению результатов')  
+                    if (check2):
+                        predictor()
                 
 st.title("Обработка данных и получение результата")
 loader()
