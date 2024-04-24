@@ -95,15 +95,11 @@ def prepairer():
 
         else:
             cleaner()
-            check = st.checkbox('Далее')
-            if(check):
-                deleter()
-                check1 = st.checkbox('Далее')
-                if(check1):
-                    encoder()
-                    check2 = st.checkbox('Перейти к получению результатов')  
-                    if (check2):
-                        predictor()
+            deleter()
+            encoder()
+            check2 = st.checkbox('Перейти к получению результатов')  
+            if (check2):
+                predictor()
                 
 st.title("Обработка данных и получение результата")
 loader()
