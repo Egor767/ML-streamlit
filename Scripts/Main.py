@@ -17,7 +17,7 @@ visual = Visual()
 prepair = PrepairData()
 model_manager = ModelManager({
     'GaussianClassifier' : [GaussianProcessClassifier(kernel = 1.0 * RBF(1.0), random_state = 0)],
-    'MultiTaskLasso' : [ElasticNet(alpha = 1.0)]
+    'ElasticNet' : [ElasticNet(alpha = 1.0)]
     })
 
 def loader():
@@ -39,7 +39,7 @@ def model_choiser():
         if choice == choices[0]:
             model_manager.model_init(['GaussianClassifier', 'classification'])
         else:
-            model_manager.model_init(['MultiTaskLasso', 'regression'])
+            model_manager.model_init(['ElasticNet', 'regression'])
 
         prepairer()
 
