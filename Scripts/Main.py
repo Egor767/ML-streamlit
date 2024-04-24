@@ -48,8 +48,11 @@ def predictor():
     check = st.checkbox('Обучить модель')
     
     if (choice != None and check):
+        st.write("1111")
         X_train, X_test, y_train, y_test = prepair.split(choice)
+        st.write("2222")
         model_manager.fit(X_train, y_train)
+        st.write("3333")
         result, report = model_manager.predict(X_test, y_test)
         st.write("Метрики: ")
         st.json(report)
