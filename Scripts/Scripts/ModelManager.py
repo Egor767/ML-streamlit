@@ -30,7 +30,7 @@ class ModelManager():
     
     def fit(self, X_test, y_test):
         st.write("fit1")
-        result = self.actual_model.fit(X_test, y_test)  
+        result = self.actual_model.fit(X_test[:10], y_test[:10])  
         st.write("fit2")
         self.actual_model = result
 
