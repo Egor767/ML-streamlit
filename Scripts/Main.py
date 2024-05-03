@@ -85,6 +85,10 @@ def cleaner():
     prepair.clean_trash()
     prepair.data_show()
 
+def shower():
+    visual.init_data(prepair.data_return())
+    visual.show_graphs()
+
 def prepairer():
     choices = ["Да", "Нет"]   
     choice = st.selectbox("Был ли ваш датасет подготовлен для решения задачи машинного обучения?", choices, index=None)
@@ -97,6 +101,7 @@ def prepairer():
             cleaner()
             deleter()
             encoder()
+            shower()
             check2 = st.checkbox('Перейти к получению результатов')  
             if (check2):
                 predictor()
